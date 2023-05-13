@@ -35,3 +35,5 @@ Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/view_category', [AdminController::class, 'view_category'])->name('view_category');
 
 Route::post('/category/store', [AdminController::class, 'categoryStore'])->name('category.store');
+
+Route::get('/delete_category/{id}', [AdminController::class, 'delete_category'])->name('delete.category');

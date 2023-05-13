@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function view_category(){
-        return view('admin.category');
+        $category = Category::all();
+        return view('admin.category', compact('category'));
     }
 
     public function categoryStore(Request $request){
@@ -18,5 +19,13 @@ class AdminController extends Controller
 
 
         return redirect()->back()->with('message', 'Category Saved Successfully');
+    }
+
+    public function delete_category($id){
+        $category =  Category::find($id);
+
+        $category->delete();
+
+        return redirect()->back()->with('message', 'Category Deleted Successfully');
     }
 }
